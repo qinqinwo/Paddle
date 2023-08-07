@@ -178,7 +178,8 @@ class SkipLayerNormOpConverter : public OpConverter {
                                               ? nvinfer1::DataType::kHALF
                                               : nvinfer1::DataType::kFLOAT);
       if (enable_int8) {
-        type = static_cast<int32_t>(nvinfer1::DataType::kHALF);
+        //type = static_cast<int32_t>(nvinfer1::DataType::kHALF);
+        type = static_cast<int32_t>(nvinfer1::DataType::kINT8);
       }
       int32_t hidden_size =
           PADDLE_GET_CONST(int32_t, op_desc.GetAttr("hidden_size"));
